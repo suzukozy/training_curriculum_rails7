@@ -30,10 +30,11 @@ class CalendarsController < ApplicationController
       target_date = @todays_date + x
       day_plans = plans[target_date]&.map(&:plan) || []
   
+      wday_num = (target_date.wday) % 7
       @week_days << {
         month: target_date.month,
         date: target_date.day,
-        wday: wdays[target_date.wday], # 曜日を追加
+        wday: wdays[wday_num], 
         plans: day_plans
       }
     end
