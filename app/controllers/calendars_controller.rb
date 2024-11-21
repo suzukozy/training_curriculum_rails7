@@ -32,13 +32,13 @@ class CalendarsController < ApplicationController
   
     7.times do |x|
 
-      target_date = @todays_date + x
-      day_plans = plans[target_date]&.map(&:plan) || []
+      todays_date = @todays_date + x
+      day_plans = plans[todays_date]&.map(&:plan) || []
   
-      wday_num = (target_date.wday) % 7
+      wday_num = (todays_date.wday) % 7
       @week_days << {
-        month: target_date.month,
-        date: target_date.day,
+        month: todays_date.month,
+        date: todays_date.day,
         wday: wdays[wday_num], 
         plans: day_plans
       }
